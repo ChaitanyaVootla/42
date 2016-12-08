@@ -1,0 +1,41 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "my node",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vc",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "phantomjs": "*",
+    "webpage": "*",
+    "pagedownloader": "*",
+    "jsdom": "*",
+    "express": "*",
+    "request": "*",
+    "jsdom": "*",
+    "twitter": "*",
+    "sequelize": "*",
+    "mysql": "*",
+    "pg": "*",
+    "async": "*",
+    "node-schedule": "*",
+    "underscore": "*",
+    "google-trends-api": "*",
+    "xml2js": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "keywords": [
+    "abc"
+  ]
+}

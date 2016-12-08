@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="twitter">
+  <head>
+    <title>Twitter</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body ng-controller="twitterCtrl" ng-init="init()">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <script src="js/angular.min.js"></script>
+    <script src="main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/underscoreModule.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:600,600italic'
+      rel='stylesheet' type='text/css'>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3" align="center">
+            <h1>Twitter Search Form</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3" align="center">
+          <div align="center">
+            <form action="" class="search-form" autocomplete="off">
+              <div class="form-group has-feedback">
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="search" id="search" placeholder="search"
+                  list="suggestionsList" ng-model="searchString" ng-change="loadSuggestions()"
+                  ng-blur="hideTheList()" ng-model-options="{debounce: 0}">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                <div class="twitterSuggestion" ng-if="searchString.length > 0 && !hideList">
+                  <ul class="list-group">
+                    <li ng-repeat="suggestion in suggestions track by $index" class="list-group-item
+                      cursorEnable"
+                      ng-click="go(suggestion)">
+                      <div class="row">
+                        <div class="col-md-4" align="center">
+                          {{suggestion.name}}
+                        </div>
+                        <div class="col-md-4" align="center">
+                          @{{suggestion.screen_name}}
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-group-item" ng-if="suggestions.length === 0">
+                      No results found
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="currentItem.loaded" class="account">
+      <div class="row mainRow">
+        <div class="col-md-3" align="center">
+          <img src="{{currentItem.highres}}" class="twitterImg">
+          <h2>{{currentItem.name}}</h2>
+          <h4>@{{currentItem.screen_name}}</h4>
+          <h4>{{currentItem.description}}</h4>
+        </div>
+
+       <!--  <div class="col-md-9" align="center">
+          <h5 ng-repeat="tweet in tweets track by $index">
+            {{tweet.text}}
+          </h5>
+        </div> -->
+        <div class="col-md-7" align="center">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="tweet in tweets track by $index">{{tweet.text}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div ng-if="loading">
+      <img src="img/rolling (1).svg" class="loading">
+    </div>
+  </body>
+</html>
